@@ -44,4 +44,66 @@ There are three sampling techniques- ideal, natural and flat top sampling.
  In ideal sampling, pulses from the analog signal are sampled but cannot be easily implemented.
 In natural sampling, a high speed switch is turned on for a small period when the sampling occurs. As a result we get a sequence of samples that still retains the shape of the analog signal.
 In flat top sampling, we use circuits to create flat top samples.
+![untitled123](https://cloud.githubusercontent.com/assets/8260656/11318150/1a158774-906c-11e5-8879-5a667f3e693e.png)
+
+2.3.2  Quantization
+The result of sampling is a series of pulses with amplitude values between the maximum and minimum values of the signal. But then the set of amplitudes within this range can take infinite non integral values. Hence the sampled wave has to be quantized.
+Quantization basically deals with mapping a large set of inputs values to a smaller set of outputs – similar to rounding off. And the error caused due to this rounding off is called quantization error.
+![image](https://cloud.githubusercontent.com/assets/8260656/11318153/36154a90-906c-11e5-8c25-bc0a3b64890b.png)
+
+2.3.3 Encoding 
+Encoding is the process of assigning binary values to the quantization code.
+
+![untitled123](https://cloud.githubusercontent.com/assets/8260656/11318156/5bdbaf80-906c-11e5-9669-a9f69f269a7c.png)
+2.4 Voice recognition
+The two common approaches for voice recognition are template matching and feature analysis.
+ To determine the "meaning" of this voice input, the computer attempts to match the input with a digitized voice sample, or template, that has a known meaning.
+ Since each user’s voice is different the program cannot possibly contain a template for each potential user. Hence the program has to be first “trained” to the new voice before it can be recognized. The user is made to speak a printed word or phrase and the program computes a set of statistical sample values and the average sample value is selected. Such a system is said to be speaker dependent.
+Another general way is to use feature analysis which leads to speaker independent voice recognition. Instead of matching the actual voice input and previously stored voice template, this method processes the voice input string using Fourier Transforms and linear predictive coding and find similarities between the input and stored template. These similarities exist for a range of speakers and hence the program doesn’t have to be trained separately for each speaker.
+ Recognition accuracy for speaker independent systems is less compared to speaker dependent ones.
+2.5 Analysis
+ 
+![untitled123](https://cloud.githubusercontent.com/assets/8260656/11318160/84eb4bce-906c-11e5-98a3-e7a86b799f45.png)
+
+# 3. Voice Controlled Wheelchair
+
+![untitled123](https://cloud.githubusercontent.com/assets/8260656/11318166/ab23cd3e-906c-11e5-9d9c-5083b11f8877.png)
+3.1 Control System
+The control system makes use of EasyVR,  a voice recognition module and Arduino Uno, a microcontroller board based on ATmega328. It is powered by a 9V battery. It is programmed to drive two motors depending on the voice command.
+  
+Command				Action
+1.  Chair Go	   			          Drives the wheelchair in set direction                                                                   2.  Chair Left				           Directs the wheelchair towards left                                                       
+2.  3. Chair Right				       Directs the wheelchair towards right                                                           
+3.  4. Chair Stop				        Stops all the above actions 
+
+
+The control system takes these four commands as input and accordingly drives 2 motors. The first motor sets the directionality while the second drives the wheelchair in the set direction.  
+
+## 3.2 Implementation of the control system
+ The implementation of the control system is done using Arduino Uno, EasyVR, Motor drive and two stepper motors.
+## 3.3 Components
+(i)	Arduino Uno
+(ii)	EasyVR
+(iii)	Motor Driver
+(iv)	Jumper wires
+(v)	9V Battery
+
+
+Microphone specifications
+Load Impedance 2.2K
+Operating Voltage 3V
+Sensitivity -38dB (0dB=1V/Pa  at 1KHz)
+If you use a microphone with different specifications the recognition accuracy may be adversely  affected. No other kind of microphone is supported by the EasyVR.
+
+Speech Recognition using EasyVR
+The recognition function of the EasyVR works on a single group at a time, so that users need to group together all the commands that they want to be able to use at the same time. 
+When EasyVR Commander connects to the module, it reads back all the user-defined commands and groups, which are stored into the EasyVR module non-volatile memory.
+
+3.3.3 Motor Driver
+L298	(Dual Full Bridge Driver)
+
+The L298 is an integrated monolithic circuit in a 15-lead Multiwatt and PowerSO20 packages. It is a high voltage, high current dual full-bridge driver designed to accept standard TTL logic levels and drive inductive loads such as relays, solenoids, DC and stepping motors. Two enable inputs are provided to enable or disable the device independently of the input signals. The emitters of the lower transistors of each bridge are connected together and the corresponding external terminal can be used for the connection of an external sensing resistor. An additional supply input is provided so that the logic works at a lower voltage.
+
+
+
 
